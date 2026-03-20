@@ -24,7 +24,7 @@ export default function Navbar() {
         </div>
         <button
           className="bg-gradient-to-br from-primary to-primary-dim
-                           text-[#f59fff] text-xs font-semibold tracking-label uppercase
+                           text-[#8ACCD5] text-xs font-semibold tracking-label uppercase
                            px-4 py-2 rounded-md hover:opacity-90 transition-opacity"
         >
           Listen Now
