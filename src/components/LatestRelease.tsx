@@ -43,12 +43,12 @@ export default function LatestRelease({ track }: Props) {
             className="font-display text-3xl font-bold uppercase"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Featured Stream
+            Latest Release
           </h2>
         </div>
 
         {/* Player card — left border accent like the HTML's border-l-8 */}
-        <div className="bg-surface-container border-l-4 border-primary shadow-[20px_20px_0px_rgba(129,236,255,0.03)]">
+        <div>
           {/* Album art hero area */}
           <div className="w-full aspect-video md:aspect-[21/9] bg-surface-high relative group overflow-hidden flex flex-col justify-end p-8">
             {/* Cover image with dark overlay */}
@@ -58,7 +58,7 @@ export default function LatestRelease({ track }: Props) {
               alt={track.title}
               className="absolute inset-0 w-full h-full object-cover opacity-30
                          group-hover:scale-105 transition-transform duration-700
-                         grayscale contrast-125"
+                         grayscale contrast-125 rounded-2xl"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = "none";
               }}

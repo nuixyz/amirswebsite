@@ -1,26 +1,62 @@
+import { Music2, Youtube, Instagram, Twitter, ArrowRight } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 
-interface Props {
+interface LinkItem {
   label: string;
   Icon: LucideIcon;
   href: string;
 }
 
-export default function SocialCard({ label, Icon, href }: Props) {
+const links: LinkItem[] = [
+  { label: "Spotify", Icon: Music2, href: "https://spotify.com" },
+  { label: "YouTube", Icon: Youtube, href: "https://youtube.com" },
+  { label: "Instagram", Icon: Instagram, href: "https://instagram.com" },
+  { label: "Twitter / X", Icon: Twitter, href: "https://twitter.com" },
+];
+
+export default function SocialCard() {
   return (
-    <a
-      href={href}
-      target="_blank"
-      className="group relative flex items-center gap-4 px-5 py-4 bg-surface-container rounded-md hover:bg-surface-high transition-colors duration-200 overflow-hidden"
-    >
-      <span className="absolute left-0 top-0 bottom-0 w-[2px] bg-secondary scale-y-0 group-hover:scale-y-100 origin-center transition-transform duration-200" />
-      <Icon
-        size={16}
-        className="text-on-surface-variant group-hover:text-primary transition-transform duration-200"
-      />
-      <span className="text-xs tracking-label uppercase text-on-surface-variant group-hover:text-on-surface transition-colors duration-200">
-        {label}
-      </span>
-    </a>
+    <section className="py-20 px-8 flex flex-col items-center bg-surface">
+      {/* Section header with ruled lines — mirrors the HTML's decorative lines */}
+      <h2
+        className="font-display text-2xl font-bold uppercase mb-12 flex items-center gap-4"
+        style={{ letterSpacing: "-0.02em" }}
+      >
+        <span className="w-8 h-px bg-primary inline-block" />
+        Check out my socials!
+        <span className="w-8 h-px bg-primary inline-block" />
+      </h2>
+
+      {/* Link list — max-w-xl centered, matches HTML */}
+      <div className="w-full max-w-xl flex flex-col gap-2">
+        {links.map(({ label, Icon, href }) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-between p-6
+                       bg-surface-container
+                       border-2 border-transparent
+                       hover:border-primary
+                       hover:bg-surface-high
+                       transition-all duration-300"
+          >
+            <div className="flex items-center gap-4">
+              <Icon size={20} className="text-primary" />
+              <span className="font-display font-bold uppercase tracking-tight text-on-surface">
+                {label}
+              </span>
+            </div>
+            <ArrowRight
+              size={18}
+              className="text-on-surface-variant
+                         group-hover:translate-x-2 group-hover:text-primary
+                         transition-all duration-300"
+            />
+          </a>
+        ))}
+      </div>
+    </section>
   );
 }

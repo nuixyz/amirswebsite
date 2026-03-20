@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import LatestRelease from "@/components/LatestRelease";
+import SocialCard from "@/components/SocialCard";
 
 const latestRelease = {
   title: "meow",
@@ -16,6 +17,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <LatestRelease track={latestRelease} />
+      <SocialCard />
     </>
   );
 }
