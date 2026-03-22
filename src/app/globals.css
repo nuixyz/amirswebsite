@@ -173,3 +173,12 @@ section {
 .list-item-kinetic:hover {
   background-color: var(--color-surface-container-low);
 }
+
+@keyframes eq-bounce {
+  from {
+    transform: scaleY(0.4);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}

@@ -9,41 +9,52 @@ export function usePlayer(src: string) {
   const raf = useRef<number>(0);
   const playingRef = useRef(false);
 
-  useEffect(() => {
-    if (howl.current) {
-      howl.current.unload();
-      howl.current = null;
-    }
-    cancelAnimationFrame(raf.current);
-    playingRef.current = false;
-    setPlaying(false);
-    setProgress(0);
+  const ensureHowl = useCallback(() => {
+    if (howl.current) return howl.current;
 
-    howl.current = new Howl({
+    const h = new Howl({
       src: [src],
-      html5: true,
+      html5: true, // streams instead of decoding all at once
       onend: () => {
         cancelAnimationFrame(raf.current);
         playingRef.current = false;
         setPlaying(false);
         setProgress(1);
       },
-      onloaderror: (_id, err) => {
-        console.error("Howler load error:", err);
-      },
-      onplayerror: (_id, err) => {
-        console.error("Howler play error:", err);
-      },
+      onloaderror: (_id, err) => console.error("Howler load error:", err),
+      onplayerror: (_id, err) => console.error("Howler play error:", err),
     });
 
+    howl.current = h;
+    return h;
+  }, [src]);
+
+  // Clean up when src changes or component unmounts
+  useEffect(() => {
     return () => {
       if (howl.current) {
         howl.current.unload();
         howl.current = null;
       }
       cancelAnimationFrame(raf.current);
+      playingRef.current = false;
+      setPlaying(false);
+      setProgress(0);
     };
   }, [src]);
+
+  useEffect(() => {
+    const onVisibilityChange = () => {
+      if (document.hidden && playingRef.current) {
+        cancelAnimationFrame(raf.current);
+      } else if (!document.hidden && playingRef.current) {
+        raf.current = requestAnimationFrame(tick);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const tick = useCallback(() => {
     const h = howl.current;
@@ -57,8 +68,7 @@ export function usePlayer(src: string) {
   }, []);
 
   const toggle = useCallback(() => {
-    const h = howl.current;
-    if (!h) return;
+    const h = ensureHowl();
 
     if (playingRef.current) {
       h.pause();
@@ -71,7 +81,7 @@ export function usePlayer(src: string) {
       playingRef.current = true;
       setPlaying(true);
     }
-  }, [tick]);
+  }, [ensureHowl, tick]);
 
   const seek = useCallback((ratio: number) => {
     const h = howl.current;
