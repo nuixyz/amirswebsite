@@ -23,7 +23,7 @@ export default function Preloader() {
     const finish = () => {
       clearInterval(interval);
       setProgress(100);
-      setTimeout(() => setVisible(false), 1000);
+      setTimeout(() => setVisible(false), 600);
     };
 
     if (document.readyState === "complete") {
