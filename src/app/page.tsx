@@ -18,10 +18,10 @@ const latestRelease = {
 };
 
 const COLORS = {
-  surface: "#b33791",
+  surface: "#526fa1",
   surfaceLow: "#ff0000",
   surfaceMid: "#ffd500",
-  surfaceEnd: "#ffb0ca", // wraps back or any final color you want
+  surfaceEnd: "#ffb0ca",
 };
 
 export default function Home() {
@@ -50,14 +50,10 @@ export default function Home() {
             line2="Make"
             line3="Noise"
             body="Somewhere between a bedroom and a stage, this all started."
-            imageSrc="/tetoplush.jpg"
+            imageSrc="/amir1.jpg"
             imageAlt="amirthetrash"
           />
         </ScrollColorWipe>
-
-        {/*
-          Section 2: red bg, transitions to yellow when scrolled away
-        */}
         <ScrollColorWipe
           bgColor={COLORS.surfaceLow}
           nextBgColor={COLORS.surfaceMid}
@@ -68,12 +64,10 @@ export default function Home() {
             line2="Create"
             line3="Memories"
             body="I click good pictures too, you know."
-            imageSrc="/tetoplush.jpg"
+            imageSrc="/amir3.jpg"
             imageAlt="amirthetrash"
           />
         </ScrollColorWipe>
-
-        {/* Footer on the final color */}
         <div style={{ backgroundColor: COLORS.surfaceMid }}>
           <Footer />
         </div>

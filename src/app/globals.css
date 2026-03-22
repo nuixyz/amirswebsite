@@ -4,12 +4,10 @@
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Manrope", sans-serif;
 
-  /* ── Primary Accent (The Kinetic Glow) ── */
   --color-primary: #b7004d;
   --color-primary-container: #e50062;
   --color-on-primary: #ffffff;
 
-  /* ── Secondary Accent ── */
   --color-secondary-container: #fdadc9;
 
   /* ── Surface Hierarchy (Tonal Layering) ── */
@@ -69,8 +67,6 @@ h3,
 }
 
 /* ── Layout & Components ── */
-
-/* The "No-Line" Rule: Use spacing and color blocking instead of borders */
 section {
   padding: 5rem 0; /* spacing-20 */
 }
