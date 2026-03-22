@@ -12,7 +12,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import DesktopMate from "@/components/DesktopMate";
 import { useBodyColor } from "@/hooks/useBodyColor";
 
-// ── All section background colors in one place ───────────────────────────────
+
 const BG = {
   hero: "#f9f9f9",
   release: "#f9f9f9",
@@ -70,7 +70,7 @@ export default function Home() {
             label="My Story"
             line1="I"
             line2="Make"
-            line3="Noise"
+            line3="Music"
             body="Somewhere between a bedroom and a stage, this all started."
             imageSrc="/amir1.jpg"
             imageAlt="amirthetrash"
