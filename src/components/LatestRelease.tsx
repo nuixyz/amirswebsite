@@ -20,7 +20,7 @@ export default function LatestRelease({ track }: Props) {
   const { playing, progress, toggle } = usePlayer(track.audioSrc);
 
   return (
-    <section className="bg-surface-low py-20 px-4">
+    <section className="bg-surface-low py-20 px-4" data-scroll-section>
       <div className="max-w-4xl mx-auto">
         {/* Section header */}
         <div className="mb-12 flex items-center gap-4 px-4">

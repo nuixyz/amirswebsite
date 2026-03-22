@@ -16,7 +16,10 @@ const links: LinkItem[] = [
 
 export default function SocialCard() {
   return (
-    <section className="py-20 px-8 flex flex-col items-center bg-surface">
+    <section
+      className="py-20 px-8 flex flex-col items-center bg-surface"
+      data-scroll-section
+    >
       {/* Section header with ruled lines — mirrors the HTML's decorative lines */}
       <h2
         className="font-display text-2xl font-bold uppercase mb-12 flex items-center gap-4"

@@ -9,7 +9,7 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="bg-surface-low mt-20">
+    <footer className="bg-surface-low mt-20" data-scroll-section>
       <div
         className="max-w-6xl mx-auto px-6 py-10
                       flex flex-col md:flex-row items-center justify-between gap-6"

@@ -22,7 +22,10 @@ export default function AboutSection({
     : [heading];
 
   return (
-    <section className="bg-surface w-full min-h-[480px] flex items-center">
+    <section
+      className="bg-surface w-full min-h-[480px] flex items-center"
+      data-scroll-section
+    >
       <div className="w-full flex flex-col md:flex-row items-stretch">
         {/* ── Left: text block ── */}
         <div className="flex-1 px-12 md:px-20 py-16 md:py-20 flex flex-col justify-center">
