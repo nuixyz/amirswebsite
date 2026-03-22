@@ -42,11 +42,10 @@ export default function Navbar() {
         </div>
 
         <button
-          className="bg-gradient-to-br from-primary to-primary-dim
-                           text-[#8ACCD5] text-xs font-semibold tracking-label uppercase
+          className="bg-primary text-white text-xs font-semibold tracking-label uppercase
                            px-4 py-2 rounded-md hover:opacity-90 transition-opacity whitespace-nowrap"
         >
-          Listen Now
+          Support Me!
         </button>
       </div>
     </nav>

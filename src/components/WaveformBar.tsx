@@ -14,7 +14,7 @@ export default function WaveformBar({ progress, bars = 48 }: Props) {
   }, [bars]);
 
   return (
-    <div className="flex items-end gap-[2px] h-12 w-full">
+    <div className="flex items-end gap-0.5 h-12 w-full">
       {heights.map((h, i) => {
         const played = i / bars < progress;
         return (
@@ -22,7 +22,7 @@ export default function WaveformBar({ progress, bars = 48 }: Props) {
             key={i}
             style={{ height: `${h}%` }}
             className={`flex-1 rounded-sm transition-colors duration-300 ${
-              played ? "bg-secondary" : "bg-surface-variant"
+              played ? "bg-surface" : "bg-primary"
             }`}
           />
         );

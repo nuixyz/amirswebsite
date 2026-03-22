@@ -8,9 +8,21 @@ interface LinkItem {
 }
 
 const links: LinkItem[] = [
-  { label: "Spotify", Icon: Music2, href: "https://spotify.com" },
-  { label: "YouTube", Icon: Youtube, href: "https://youtube.com" },
-  { label: "Instagram", Icon: Instagram, href: "https://instagram.com" },
+  {
+    label: "Spotify",
+    Icon: Music2,
+    href: "https://open.spotify.com/artist/4hBSyWM9kJonEcn7d6UnO9?si=rrLKPdpeTB2Z5UsOeboWAw&nd=1&dlsi=5bccf434d8d14c82",
+  },
+  {
+    label: "YouTube",
+    Icon: Youtube,
+    href: "https://www.youtube.com/@amirthetrash",
+  },
+  {
+    label: "Instagram",
+    Icon: Instagram,
+    href: "https://www.instagram.com/amircynical/",
+  },
   { label: "Twitter / X", Icon: Twitter, href: "https://twitter.com" },
 ];
 

@@ -25,11 +25,11 @@ export default function LatestRelease({ track }: Props) {
         {/* Section header */}
         <div className="mb-12 flex items-center gap-4 px-4">
           {/* Animated EQ bars icon */}
-          <div className="flex items-end gap-[3px] h-8">
+          <div className="flex items-end gap-0.75 h-8">
             {[60, 100, 40, 80, 55].map((h, i) => (
               <span
                 key={i}
-                className="w-[3px] bg-primary rounded-sm"
+                className="w-0.75 bg-primary rounded-sm"
                 style={{
                   height: `${h}%`,
                   animation: playing
@@ -58,7 +58,7 @@ export default function LatestRelease({ track }: Props) {
               alt={track.title}
               className="absolute inset-0 w-full h-full object-cover opacity-30
                          group-hover:scale-105 transition-transform duration-700
-                         grayscale contrast-125 rounded-2xl"
+                         rounded-2xl"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = "none";
               }}
@@ -93,7 +93,7 @@ export default function LatestRelease({ track }: Props) {
                 <button
                   onClick={toggle}
                   className="w-12 h-12 flex items-center justify-center flex-shrink-0
-                             bg-gradient-to-br from-primary to-primary-dim text-on-primary
+                             bg-primary text-on-primary
                              hover:opacity-90 transition-opacity"
                   aria-label={playing ? "Pause" : "Play"}
                 >
