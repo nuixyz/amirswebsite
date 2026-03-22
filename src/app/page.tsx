@@ -10,11 +10,11 @@ import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 
 const latestRelease = {
-  title: "meow",
+  title: "STARGAZER",
   artist: "amirthetrash",
-  album: "meow",
-  coverSrc: "/tetoplush.jpg",
-  audioSrc: "/audio/mommyyukari.mp3",
+  album: "STARGAZER",
+  coverSrc: "/covers/stargazer.png",
+  audioSrc: "/audio/STARGAZER.wav",
 };
 
 const COLORS = {
@@ -36,7 +36,7 @@ export default function Home() {
           label="About Me"
           heading='Amir (aka amirthetrash) is a producer and editor from Malaysia making everything from Lofi to Breakcore. He’s best known for "departures" and "frutiger aero," which have hit over 1.8M combined streams and counting. 🎶'
           accentWord="meow"
-          imageSrc="/tetoplush.jpg"
+          imageSrc="/amir3.jpg"
           imageAlt="amirthetrash in the studio"
         />
         <Albums />

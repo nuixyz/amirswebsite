@@ -1,5 +1,6 @@
 import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
+import Preloader from "@/components/preloader";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body className="bg-surface font-body text-on-surface antialiased">
+        <Preloader />
         {children}
       </body>
     </html>

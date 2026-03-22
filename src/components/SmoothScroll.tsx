@@ -13,11 +13,10 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
   const pathname = usePathname();
 
   useEffect(() => {
-    // v5 uses lenisOptions for fine-tuning the feel
     locomotiveRef.current = new LocomotiveScroll({
       lenisOptions: {
-        lerp: 0.08, // Move lerp here
-        duration: 1.2,
+        lerp: 0.08,
+        duration: 0.5,
         smoothWheel: true,
       },
     });

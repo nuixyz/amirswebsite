@@ -49,7 +49,6 @@ export default function AboutSection({
                   className="inline-block mx-1 text-primary"
                   style={{ lineHeight: 1 }}
                 >
-                  {/* Double chevron SVG — mirrors the BandLab-style icon in the screenshot */}
                   <svg
                     viewBox="0 0 40 44"
                     fill="none"
