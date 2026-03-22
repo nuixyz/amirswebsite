@@ -7,7 +7,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font_body",
+  variable: "--font-body",
 });
 
 export default function RootLayout({

@@ -27,16 +27,20 @@ export default function OverlapHero({
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="bg-surface w-full overflow-hidden" data-scroll-section>
+    // fill the sticky 100vh container fully so content is vertically centered
+    <section
+      className="w-full overflow-hidden"
+      style={{ height: "100%", minHeight: "100vh" }}
+    >
       <div
         ref={ref}
-        className="relative w-full"
+        className="relative w-full h-full"
         style={{ minHeight: "clamp(520px, 80vw, 900px)" }}
       >
-        {/* ── Label — top left ── */}
+        {/* Label */}
         <motion.p
           className="absolute top-12 left-[15%] z-20
-                     text-xs tracking-label uppercase text-on-surface-variant"
+                     text-xs tracking-[0.15em] uppercase text-on-surface-variant"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -44,12 +48,11 @@ export default function OverlapHero({
           {label}
         </motion.p>
 
-        {/* top area, slightly right of center, above image */}
-        <motion.div
-          className="absolute z-20 font-display font-bold text-on-surface select-none"
+        {/* Line 1 — in front of image */}
+        <motion.span
+          className="absolute z-20 font-display font-bold text-on-surface select-none leading-none"
           style={{
             fontSize: "clamp(80px, 13vw, 200px)",
-            lineHeight: 0.9,
             letterSpacing: "-0.04em",
             top: "6%",
             left: "30%",
@@ -59,15 +62,14 @@ export default function OverlapHero({
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           {line1}
-        </motion.div>
+        </motion.span>
 
-        {/* ── Image ── */}
+        {/* Image — middle z-layer */}
         <motion.div
           className="absolute z-10 overflow-hidden"
           style={{
             width: "clamp(280px, 30vw, 460px)",
             aspectRatio: "3 / 4",
-            // aspectRatio: "1",
             top: "12%",
             left: "40%",
             transform: "translateX(-50%)",
@@ -85,12 +87,11 @@ export default function OverlapHero({
           />
         </motion.div>
 
-        {/* spans full width behind the image */}
-        <motion.div
-          className="absolute z-0 font-display font-bold text-on-surface select-none whitespace-nowrap"
+        {/* Line 2 — BEHIND image */}
+        <motion.span
+          className="absolute z-0 font-display font-bold text-on-surface select-none leading-none whitespace-nowrap"
           style={{
             fontSize: "clamp(80px, 13vw, 200px)",
-            lineHeight: 0.9,
             letterSpacing: "-0.04em",
             top: "38%",
             left: "8%",
@@ -100,14 +101,13 @@ export default function OverlapHero({
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           {line2}
-        </motion.div>
+        </motion.span>
 
-        {/* bottom right, above image */}
-        <motion.div
-          className="absolute z-20 font-display font-bold text-on-surface select-none"
+        {/* Line 3 — in front, bottom right */}
+        <motion.span
+          className="absolute z-20 font-display font-bold text-on-surface select-none leading-none"
           style={{
             fontSize: "clamp(80px, 13vw, 200px)",
-            lineHeight: 0.9,
             letterSpacing: "-0.04em",
             bottom: "6%",
             right: "8%",
@@ -117,11 +117,11 @@ export default function OverlapHero({
           transition={{ duration: 0.8, delay: 1 }}
         >
           {line3}
-        </motion.div>
+        </motion.span>
 
-        {/* ── Body - right side, vertically centered with image */}
+        {/* Body copy */}
         <motion.p
-          className="absolute z-20 font-body text-on-surface font-semibold"
+          className="absolute z-20 font-body font-semibold text-on-surface"
           style={{
             fontSize: "clamp(14px, 1.4vw, 22px)",
             lineHeight: 1.4,
