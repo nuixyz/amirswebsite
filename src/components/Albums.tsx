@@ -14,7 +14,7 @@ interface Album {
 const albums: Album[] = [
   {
     title: "STARGAZER",
-    tag: "Lo-Fi · Ambient",
+    tag: "dariacore · hyperflip",
     description:
       "A hazy collection of bedroom beats for late nights and slow mornings.",
     // coverSrc: "/covers/departures.jpg",
@@ -33,7 +33,7 @@ const albums: Album[] = [
   },
   {
     title: "frutiger aero",
-    tag: "Experimental · Cute",
+    tag: "ambient",
     description:
       "Everything soft, strange, and a little off-beat. The vibe is exactly what it sounds like.",
     coverSrc: "/covers/frutiger.png",
@@ -42,7 +42,7 @@ const albums: Album[] = [
   },
   {
     title: "Formula 1",
-    tag: "Ambient · Drone",
+    tag: "house",
     description:
       "White noise and wandering synths for when you need to disappear for a while.",
     coverSrc: "/covers/formulaone.png",
@@ -100,8 +100,8 @@ export default function Albums() {
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center gap-3 px-7 py-3
-                     border border-outline-variant/30
-                     text-on-surface-variant text-xs tracking-label uppercase font-semibold
+                     border border-white
+                     text-white text-xs tracking-label uppercase font-semibold
                      hover:border-primary hover:text-primary
                      transition-all duration-300 rounded-3xl"
         >
@@ -138,7 +138,7 @@ function AlbumCard({ album }: { album: Album }) {
       <img
         src={album.coverSrc}
         alt={album.title}
-        className="absolute inset-0 w-full h-full object-cover opacity-10
+        className="absolute inset-0 w-full h-full object-cover opacity-40
                    group-hover:opacity-20 transition-opacity duration-500"
         onError={(e) => {
           (e.target as HTMLImageElement).style.display = "none";
@@ -175,14 +175,14 @@ function AlbumCard({ album }: { album: Album }) {
           <span
             className="inline-block mb-4 px-3 py-1 text-[10px] font-semibold
                        tracking-label uppercase border border-current rounded-full
-                       text-on-surface group-hover:text-white group-hover:border-white
+                       text-white group-hover:text-white group-hover:border-white
                        transition-colors duration-300"
           >
             {album.tag}
           </span>
 
           <p
-            className="text-sm text-on-surface-variant leading-relaxed mb-5
+            className="text-sm text-white leading-relaxed mb-5
                        group-hover:text-white/80 transition-colors duration-300"
           >
             {album.description}
@@ -191,7 +191,7 @@ function AlbumCard({ album }: { album: Album }) {
           {/* Learn more row */}
           <div
             className="flex items-center gap-2 text-xs tracking-label uppercase font-semibold
-                          text-on-surface-variant group-hover:text-white transition-colors duration-300"
+                          text-white group-hover:text-white transition-colors duration-300"
           >
             <ArrowUpRight size={13} />
             Listen on Spotify

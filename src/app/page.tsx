@@ -9,12 +9,14 @@ import ScrollColorWipe from "@/components/ScrollColorWipe";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 
+import DesktopMate from "@/components/DesktopMate";
+
 const latestRelease = {
   title: "STARGAZER",
   artist: "amirthetrash",
   album: "STARGAZER",
   coverSrc: "/covers/stargazer.png",
-  audioSrc: "/audio/STARGAZER.wav",
+  audioSrc: "/audio/STARGAZER.mp3",
 };
 
 const COLORS = {
@@ -68,6 +70,7 @@ export default function Home() {
             imageAlt="amirthetrash"
           />
         </ScrollColorWipe>
+        <DesktopMate />
         <div style={{ backgroundColor: COLORS.surfaceMid }}>
           <Footer />
         </div>
