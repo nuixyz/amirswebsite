@@ -12,7 +12,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import DesktopMate from "@/components/DesktopMate";
 import { useBodyColor } from "@/hooks/useBodyColor";
 
-// ── All section background colors in one place ───────────────────────────────
+
 const BG = {
   hero: "#f9f9f9",
   release: "#f9f9f9",
