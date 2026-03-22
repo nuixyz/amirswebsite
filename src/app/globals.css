@@ -35,7 +35,7 @@
 
 /* ── Base Styles ── */
 body {
-  background-color: var(--color-surface);
+  transition: background-color 0.8s ease;
   color: var(--color-on-surface);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;

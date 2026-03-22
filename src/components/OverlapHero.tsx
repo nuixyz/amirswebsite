@@ -29,7 +29,7 @@ export default function OverlapHero({
   return (
     // fill the sticky 100vh container fully so content is vertically centered
     <section
-      className="w-full overflow-hidden"
+      className="w-full overflow-hidden my-70"
       style={{ height: "100%", minHeight: "100vh" }}
     >
       <div
@@ -40,7 +40,7 @@ export default function OverlapHero({
         {/* Label */}
         <motion.p
           className="absolute top-12 left-[15%] z-20
-                     text-xs tracking-[0.15em] uppercase text-on-surface-variant"
+                     text-xs tracking-[0.15em] uppercase font-semibold text-white"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}

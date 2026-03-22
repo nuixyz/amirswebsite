@@ -16,7 +16,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     locomotiveRef.current = new LocomotiveScroll({
       lenisOptions: {
         lerp: 0.08,
-        duration: 0.5,
+        duration: 0.3,
         smoothWheel: true,
       },
     });

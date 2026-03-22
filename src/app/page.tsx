@@ -1,3 +1,5 @@
+"use client";
+
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import LatestRelease from "@/components/LatestRelease";
@@ -5,11 +7,22 @@ import SocialCard from "@/components/SocialCard";
 import AboutSection from "@/components/AboutSection";
 import OverlapHero from "@/components/OverlapHero";
 import Albums from "@/components/Albums";
-import ScrollColorWipe from "@/components/ScrollColorWipe";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
-
 import DesktopMate from "@/components/DesktopMate";
+import { useBodyColor } from "@/hooks/useBodyColor";
+
+// ── All section background colors in one place ───────────────────────────────
+const BG = {
+  hero: "#f9f9f9",
+  release: "#f9f9f9",
+  social: "#f9f9f9",
+  about: "#f9f9f9",
+  albums: "#f9f9f9",
+  story: "#526fa1", // blue
+  work: "#ff0000", // red
+  footer: "#ff0000", // yellow
+};
 
 const latestRelease = {
   title: "STARGAZER",
@@ -19,33 +32,40 @@ const latestRelease = {
   audioSrc: "/audio/STARGAZER.mp3",
 };
 
-const COLORS = {
-  surface: "#526fa1",
-  surfaceLow: "#ff0000",
-  surfaceMid: "#ffd500",
-  surfaceEnd: "#ffb0ca",
-};
-
 export default function Home() {
+  useBodyColor();
+
   return (
     <>
       <Navbar />
       <SmoothScroll>
-        <HeroSection />
-        <LatestRelease track={latestRelease} />
-        <SocialCard />
-        <AboutSection
-          label="About Me"
-          heading='Amir (aka amirthetrash) is a producer and editor from Malaysia making everything from Lofi to Breakcore. He’s best known for "departures" and "frutiger aero," which have hit over 1.8M combined streams and counting. 🎶'
-          accentWord="meow"
-          imageSrc="/amir3.jpg"
-          imageAlt="amirthetrash in the studio"
-        />
-        <Albums />
-        <ScrollColorWipe
-          bgColor={COLORS.surface}
-          nextBgColor={COLORS.surfaceLow}
-        >
+        <div data-bg={BG.hero}>
+          <HeroSection />
+        </div>
+
+        <div data-bg={BG.release}>
+          <LatestRelease track={latestRelease} />
+        </div>
+
+        <div data-bg={BG.social}>
+          <SocialCard />
+        </div>
+
+        <div data-bg={BG.about}>
+          <AboutSection
+            label="About Me"
+            heading='Amir (aka amirthetrash) is a producer and editor from Malaysia making everything from Lofi to Breakcore. He&apos;s best known for "departures" and "frutiger aero," which have hit over 1.8M combined streams and counting. 🎶'
+            accentWord="meow"
+            imageSrc="/amir3.jpg"
+            imageAlt="amirthetrash in the studio"
+          />
+        </div>
+
+        <div data-bg={BG.albums}>
+          <Albums />
+        </div>
+
+        <div data-bg={BG.story}>
           <OverlapHero
             label="My Story"
             line1="I"
@@ -55,11 +75,9 @@ export default function Home() {
             imageSrc="/amir1.jpg"
             imageAlt="amirthetrash"
           />
-        </ScrollColorWipe>
-        <ScrollColorWipe
-          bgColor={COLORS.surfaceLow}
-          nextBgColor={COLORS.surfaceMid}
-        >
+        </div>
+
+        <div data-bg={BG.work}>
           <OverlapHero
             label="My Work"
             line1="I"
@@ -69,12 +87,13 @@ export default function Home() {
             imageSrc="/amir3.jpg"
             imageAlt="amirthetrash"
           />
-        </ScrollColorWipe>
-        <DesktopMate />
-        <div style={{ backgroundColor: COLORS.surfaceMid }}>
+        </div>
+
+        <div data-bg={BG.footer}>
           <Footer />
         </div>
       </SmoothScroll>
+      <DesktopMate />
     </>
   );
 }
