@@ -16,11 +16,11 @@ const latestRelease = {
   audioSrc: "/audio/mommyyukari.mp3",
 };
 
-// transition colors
 const COLORS = {
-  surface: "#ffb0ca", // primary color
+  surface: "#ffb0ca",
   surfaceLow: "#ff0000",
   surfaceMid: "#ffd500",
+  surfaceEnd: "#ffb0ca", // wraps back or any final color you want
 };
 
 export default function Home() {
@@ -38,7 +38,14 @@ export default function Home() {
           imageSrc="/tetoplush.jpg"
           imageAlt="amirthetrash in the studio"
         />
-        <ScrollColorWipe fromColor={COLORS.surface} toColor={COLORS.surfaceLow}>
+
+        {/*
+          Section 1: pink bg, transitions to red when scrolled away
+        */}
+        <ScrollColorWipe
+          bgColor={COLORS.surface}
+          nextBgColor={COLORS.surfaceLow}
+        >
           <OverlapHero
             label="My Story"
             line1="I"
@@ -49,9 +56,13 @@ export default function Home() {
             imageAlt="amirthetrash"
           />
         </ScrollColorWipe>
+
+        {/*
+          Section 2: red bg, transitions to yellow when scrolled away
+        */}
         <ScrollColorWipe
-          fromColor={COLORS.surfaceLow}
-          toColor={COLORS.surfaceMid}
+          bgColor={COLORS.surfaceLow}
+          nextBgColor={COLORS.surfaceMid}
         >
           <OverlapHero
             label="My Work"
@@ -63,6 +74,8 @@ export default function Home() {
             imageAlt="amirthetrash"
           />
         </ScrollColorWipe>
+
+        {/* Footer on the final color */}
         <div style={{ backgroundColor: COLORS.surfaceMid }}>
           <Footer />
         </div>

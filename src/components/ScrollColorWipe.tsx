@@ -1,69 +1,58 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 interface Props {
   children: React.ReactNode;
-  fromColor: string; // current section bg
-  toColor: string; // next section bg — wipes up from bottom
+  bgColor: string; // this section's background
+  nextBgColor: string; // next section's background — bleeds in from bottom as you scroll out
 }
 
 /**
- * Wraps a section so that as you scroll through it, the NEXT section's
- * background color rises from the bottom like a curtain (BandLab-style).
+ * Each section is 100vh + sticky. As you scroll out of a section, the NEXT
+ * section's color bleeds up from below — exactly like BandLab. No curtain div,
+ * no 200vh trick. The color change is driven purely by which section is in view.
  *
- * The section is given extra scroll height (200vh) so the user actually
- * scrolls "through" it while the content stays sticky in the viewport.
- * The curtain fills from 0% → 100% over that scroll distance.
+ * Usage:
+ *   <ScrollColorWipe bgColor="#0e0e0e" nextBgColor="#131313">
+ *     <OverlapHero ... />
+ *   </ScrollColorWipe>
  */
 export default function ScrollColorWipe({
   children,
-  fromColor,
-  toColor,
+  bgColor,
+  nextBgColor,
 }: Props) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
-  // Track scroll progress relative to this tall container
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
+    target: ref,
+    offset: ["start start", "end start"], // fires as top of section scrolls to top of viewport
   });
 
-  // Curtain height: 0% → 100% as you scroll through
-  const curtainHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  // As you scroll the section away upward (progress 0→1), the bg transitions
+  // from this section's color to the next — creating the "instant color swap"
+  // feel because it snaps fast at the midpoint
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [bgColor, bgColor, nextBgColor],
+  );
 
   return (
-    // Outer container is 200vh tall — gives the scroll "room" to breathe
-    <div ref={containerRef} style={{ height: "200vh", position: "relative" }}>
-      {/* Sticky inner: stays fixed in viewport while user scrolls through the 200vh */}
-      <div
+    <div ref={ref} style={{ position: "relative" }}>
+      <motion.div
         style={{
+          backgroundColor,
           position: "sticky",
           top: 0,
-          height: "100vh",
+          minHeight: "100vh",
           overflow: "hidden",
-          backgroundColor: fromColor,
         }}
       >
-        {/* The actual section content */}
-        <div style={{ position: "relative", zIndex: 10, height: "100%" }}>
-          {children}
-        </div>
-
-        {/* Curtain: rises from bottom, covers the fromColor with toColor */}
-        <motion.div
-          aria-hidden
-          style={{
-            position: "absolute",
-            inset: "auto 0 0 0", // anchored to bottom
-            backgroundColor: toColor,
-            height: curtainHeight, // grows upward
-            zIndex: 20,
-            pointerEvents: "none",
-          }}
-        />
-      </div>
+        {children}
+      </motion.div>
     </div>
   );
 }
