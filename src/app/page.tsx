@@ -4,6 +4,7 @@ import LatestRelease from "@/components/LatestRelease";
 import SocialCard from "@/components/SocialCard";
 import AboutSection from "@/components/AboutSection";
 import OverlapHero from "@/components/OverlapHero";
+import Albums from "@/components/Albums";
 import ScrollColorWipe from "@/components/ScrollColorWipe";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -38,10 +39,7 @@ export default function Home() {
           imageSrc="/tetoplush.jpg"
           imageAlt="amirthetrash in the studio"
         />
-
-        {/*
-          Section 1: pink bg, transitions to red when scrolled away
-        */}
+        <Albums />
         <ScrollColorWipe
           bgColor={COLORS.surface}
           nextBgColor={COLORS.surfaceLow}
