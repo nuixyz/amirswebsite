@@ -53,7 +53,7 @@ const albums: Album[] = [
 
 export default function Albums() {
   return (
-    <section className="bg-surface py-20 px-6 md:px-12" data-scroll-section>
+    <section className="py-20 px-6 md:px-12" data-scroll-section>
       {/* Section header */}
       <div className="flex items-end justify-between mb-10 max-w-[1400px] mx-auto">
         <h2
