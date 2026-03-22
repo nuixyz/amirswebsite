@@ -17,7 +17,7 @@ const latestRelease = {
 };
 
 const COLORS = {
-  surface: "#ffb0ca",
+  surface: "#b33791",
   surfaceLow: "#ff0000",
   surfaceMid: "#ffd500",
   surfaceEnd: "#ffb0ca", // wraps back or any final color you want
@@ -33,7 +33,7 @@ export default function Home() {
         <SocialCard />
         <AboutSection
           label="About Me"
-          heading="i make meow music."
+          heading='Amir (aka amirthetrash) is a producer and editor from Malaysia making everything from Lofi to Breakcore. He’s best known for "departures" and "frutiger aero," which have hit over 1.8M combined streams and counting. 🎶'
           accentWord="meow"
           imageSrc="/tetoplush.jpg"
           imageAlt="amirthetrash in the studio"

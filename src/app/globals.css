@@ -8,14 +8,14 @@
   --font-mono: "Space Grotesk", monospace;
 
   /* ── Colors: Tonal Immersion ── */
-  --color-primary: #ffb0ca;
+  --color-primary: #b33791;
   --color-primary-container: #ac1754;
-  --color-on-primary: #e53887;
+  --color-on-primary: #fff;
 
   /* ── Surface Hierarchy: The No-Line Rule ── */
-  --color-surface-lowest: #66002d;
-  --color-surface: #e53887;
-  --color-surface-container-low: #66002d;
+  --color-surface-lowest: #f7a8c4;
+  --color-surface: #f7a8c4;
+  --color-surface-container-low: #b33791;
   --color-surface-container-highest: #3a3335;
   --color-surface-variant: rgba(58, 51, 53, 0.4);
 
