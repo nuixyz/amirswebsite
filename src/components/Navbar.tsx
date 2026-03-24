@@ -15,6 +15,7 @@ export default function Navbar() {
     <>
       <nav className="fixed top-0 w-full z-50 bg-surface-variant/70 backdrop-blur-md border-b border-outline-variant/15">
         <div className="w-full px-6 h-14 flex items-center justify-between">
+          {/* Brand */}
           <span className="font-display text-sm font-bold tracking-[0.15em] text-on-surface whitespace-nowrap">
             @amirthetrash
           </span>
@@ -34,7 +35,7 @@ export default function Navbar() {
                 >
                   {l}
                   {isActive && (
-                    <span className="absolute -bottom-[18px] left-0 right-0 h-[2px] bg-primary" />
+                    <span className="absolute -bottom-4.5 left-0 right-0 h-[2px] bg-primary" />
                   )}
                 </Link>
               );
@@ -42,10 +43,8 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <button
-              className="bg-primary text-white text-xs font-semibold tracking-label uppercase
-                               px-4 py-2 rounded-md hover:opacity-90 transition-opacity whitespace-nowrap"
-            >
+            {/* CTA — always visible */}
+            <button className="bg-primary text-white text-xs font-semibold tracking-label uppercase px-4 py-2 rounded-md hover:opacity-90 transition-opacity whitespace-nowrap">
               Support Me!
             </button>
 

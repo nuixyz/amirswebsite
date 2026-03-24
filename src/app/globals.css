@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root {
+@theme {
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Manrope", sans-serif;
   --font-pixel: var(--font-pixel);
