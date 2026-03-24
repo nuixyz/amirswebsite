@@ -43,7 +43,7 @@ export default function Preloader() {
       {visible && (
         <motion.div
           key="preloader"
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-surface"
+          className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-surface"
           initial={{ opacity: 1 }}
           exit={{
             y: "-100%",
@@ -65,7 +65,7 @@ export default function Preloader() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface/60 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-surface/60 to-transparent" />
           </motion.div>
 
           {/* Name */}
@@ -94,7 +94,7 @@ export default function Preloader() {
 
           {/* Progress bar */}
           <motion.div
-            className="w-40 md:w-56 h-[2px] bg-surface-container overflow-hidden"
+            className="w-40 md:w-56 h-0.5 bg-surface-container overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}

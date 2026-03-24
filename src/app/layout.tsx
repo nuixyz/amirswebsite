@@ -1,4 +1,4 @@
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Space_Grotesk, Inter, Pixelify_Sans } from "next/font/google";
 import "./globals.css";
 import Preloader from "@/components/preloader";
 
@@ -14,13 +14,22 @@ const inter = Inter({
   display: "swap",
 });
 
+const pixelifySans = Pixelify_Sans({
+  subsets: ["latin"],
+  variable: "--font-pixel",
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${inter.variable} ${pixelifySans.variable}`}
+    >
       <body className="bg-surface font-body text-on-surface antialiased">
         <Preloader />
         {children}

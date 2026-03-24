@@ -11,7 +11,12 @@ const links: LinkItem[] = [
   {
     label: "Spotify",
     Icon: Music2,
-    href: "https://open.spotify.com/artist/4hBSyWM9kJonEcn7d6UnO9?si=rrLKPdpeTB2Z5UsOeboWAw&nd=1&dlsi=5bccf434d8d14c82",
+    href: "https://open.spotify.com/artist/4hBSyWM9kJonEcn7d6UnO9",
+  },
+  {
+    label: "Apple Music",
+    Icon: Music2,
+    href: "https://music.apple.com/in/artist/amirthetrash/1712005676",
   },
   {
     label: "YouTube",

@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
-@theme {
+:root {
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Manrope", sans-serif;
+  --font-pixel: var(--font-pixel);
 
   --color-primary: #b7004d;
   --color-primary-container: #e50062;
@@ -35,7 +36,7 @@
 
 /* ── Base Styles ── */
 body {
-  transition: background-color 0.8s ease;
+  transition: background-color 0.5s ease;
   color: var(--color-on-surface);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
