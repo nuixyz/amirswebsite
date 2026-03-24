@@ -91,7 +91,7 @@ export default function AboutSection({
             src={imageSrc}
             alt={imageAlt}
             fill
-            className="object-cover grayscale-[20%] contrast-110"
+            className="object-cover grayscale-20 contrast-110"
             sizes="(max-width: 768px) 100vw, 40vw"
           />
         </div>

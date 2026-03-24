@@ -11,19 +11,19 @@
 
   --color-secondary-container: #fdadc9;
 
-  /* ── Surface Hierarchy (Tonal Layering) ── */
-  --color-surface: #f9f9f9; /* Base Canvas */
-  --color-surface-container-lowest: #ffffff; /* Elevated Cards */
-  --color-surface-container-low: #f3f3f3; /* Subtle Divisions */
-  --color-surface-container: #eeeeee; /* Structural Sections */
-  --color-surface-container-highest: #e2e2e2; /* Secondary Buttons */
+  /* ── Surface Hierarchy ── */
+  --color-surface: #f9f9f9;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f3f3;
+  --color-surface-container: #eeeeee;
+  --color-surface-container-highest: #e2e2e2;
 
-  /* ── Text Colors ── */
-  --color-on-surface: #1a1c1c; /* Premium Dark (No Black) */
+  /* ── Text ── */
+  --color-on-surface: #1a1c1c;
   --color-on-surface-variant: #6b6d6d;
 
-  /* ── Borders & Outlines ── */
-  --color-outline-variant: rgba(230, 188, 194, 0.15); /* Ghost Border */
+  /* ── Borders ── */
+  --color-outline-variant: #e6bcc2;
 
   /* ── Letter Spacing ── */
   --tracking-tight-display: -0.02em;
@@ -36,6 +36,7 @@
 
 /* ── Base Styles ── */
 body {
+  background-color: #f9f9f9;
   transition: background-color 0.5s ease;
   color: var(--color-on-surface);
   font-family: var(--font-body);
@@ -69,18 +70,16 @@ h3,
 
 /* ── Layout & Components ── */
 section {
-  padding: 5rem 0; /* spacing-20 */
+  padding: 5rem 0;
 }
 
 .card-elevated {
   background-color: var(--color-surface-container-lowest);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
-  /* Ambient Shadow with primary tint */
   box-shadow: 0 20px 40px rgba(188, 0, 79, 0.06);
 }
 
-/* Glassmorphism Floating UI */
 .glass-ui {
   background-color: rgba(249, 249, 249, 0.7);
   backdrop-filter: blur(20px);
@@ -136,7 +135,7 @@ section {
   width: 100%;
 }
 
-/* ── Specialized Music Components ── */
+/* ── Music Components ── */
 .progress-bar-track {
   background-color: var(--color-secondary-container);
   height: 4px;

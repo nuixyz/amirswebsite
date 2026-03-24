@@ -39,7 +39,7 @@ export default function OverlapHero({
           {label}
         </motion.p>
         <motion.div
-          className="w-full aspect-[4/3] relative overflow-hidden rounded-2xl"
+          className="w-full aspect-4/3 relative overflow-hidden rounded-2xl"
           initial={{ opacity: 0, scale: 0.96 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}

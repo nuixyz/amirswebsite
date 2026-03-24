@@ -13,11 +13,10 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 bg-surface-variant/70 backdrop-blur-md border-b border-outline-variant/15">
+      <nav className="fixed top-0 w-full z-50 backdrop-blur-md border-b border-outline-variant/15">
         <div className="w-full px-6 h-14 flex items-center justify-between">
-          {/* Brand */}
           <span className="font-display text-sm font-bold tracking-[0.15em] text-on-surface whitespace-nowrap">
-            @amirthetrash
+            <a>@amirthetrash</a>
           </span>
 
           {/* Desktop links — centered */}
@@ -31,11 +30,11 @@ export default function Navbar() {
                   key={l}
                   href={href}
                   className={`relative text-xs tracking-label uppercase transition-colors duration-200
-                    ${isActive ? "text-primary font-semibold" : "text-on-surface-variant hover:text-primary"}`}
+                    ${isActive ? "text-primary font-semibold" : "text-black hover:text-primary"}`}
                 >
                   {l}
                   {isActive && (
-                    <span className="absolute -bottom-4.5 left-0 right-0 h-[2px] bg-primary" />
+                    <span className="absolute -bottom-4.5 left-0 right-0 h-0.5 bg-primary" />
                   )}
                 </Link>
               );
@@ -43,12 +42,12 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* CTA — always visible */}
-            <button className="bg-primary text-white text-xs font-semibold tracking-label uppercase px-4 py-2 rounded-md hover:opacity-90 transition-opacity whitespace-nowrap">
+            <button
+              className="bg-primary text-white text-xs font-semibold tracking-label uppercase
+                               px-4 py-2 rounded-md hover:opacity-90 transition-opacity whitespace-nowrap"
+            >
               Support Me!
             </button>
-
-            {/* Hamburger — mobile only */}
             <button
               className="md:hidden text-on-surface p-1"
               onClick={() => setOpen((v) => !v)}
@@ -60,13 +59,15 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile drawer */}
+      {/* mobile */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col pt-14 transition-all duration-300 md:hidden
+        className={`fixed inset-0 z-40 flex flex-col pt-14 md:hidden
+                    transition-opacity duration-300
                     ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         style={{
-          backgroundColor: "rgba(var(--color-surface) / 0.97)",
-          backdropFilter: "blur(12px)",
+          backgroundColor: "rgba(249, 249, 249, 0.96)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
         }}
       >
         <nav className="flex flex-col gap-1 px-6 pt-8">
@@ -80,12 +81,10 @@ export default function Navbar() {
                 href={href}
                 onClick={() => setOpen(false)}
                 className={`font-display font-bold py-4 border-b border-outline-variant/20
-                            transition-colors duration-200
                             ${isActive ? "text-primary" : "text-on-surface hover:text-primary"}`}
                 style={{
                   fontSize: "clamp(1.8rem, 8vw, 2.5rem)",
                   letterSpacing: "-0.02em",
-                  transitionDelay: `${i * 40}ms`,
                   transform: open ? "translateY(0)" : "translateY(10px)",
                   opacity: open ? 1 : 0,
                   transition: `transform 0.3s ease ${i * 50}ms, opacity 0.3s ease ${i * 50}ms, color 0.2s`,

@@ -55,7 +55,7 @@ export default function Albums() {
   return (
     <section className="py-20 px-6 md:px-12" data-scroll-section>
       {/* Section header */}
-      <div className="flex items-end justify-between mb-10 max-w-[1400px] mx-auto">
+      <div className="flex items-end justify-between mb-10 max-w-350 mx-auto">
         <h2
           className="font-display font-bold text-on-surface"
           style={{
@@ -86,7 +86,7 @@ export default function Albums() {
 
       {/* Album grid */}
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 max-w-[1400px] mx-auto"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 max-w-350 mx-auto"
         style={{ border: "1px solid var(--color-surface-container)" }}
       >
         {albums.map((album) => (
@@ -126,7 +126,7 @@ function AlbumCard({ album }: { album: Album }) {
       className="album-card group relative flex flex-col justify-between
                  bg-surface-container overflow-hidden cursor-pointer
                  border-r border-b border-surface-container
-                 min-h-[420px] p-7"
+                 min-h-105 p-7"
       style={
         {
           "--accent": album.accentColor,
@@ -146,7 +146,7 @@ function AlbumCard({ album }: { album: Album }) {
       />
 
       {/* Gradient overlay — always present, darkens toward bottom */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
 
       {/* Hover wipe — color floods up from bottom */}
       <div
