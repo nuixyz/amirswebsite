@@ -36,7 +36,7 @@ export default function Footer() {
           ))}
         </nav>
         <button className="bg-white text-primary text-xs font-semibold tracking-label mx-4 px-4 py-2 rounded-md hover:opacity-90 transition-opacity whitespace-nowrap">
-          <a href="https://www.paypal.com/paypalme/amirthetrash">
+          <a href="https://www.paypal.com/paypalme/nuixyz">
             website made by nuix
           </a>
         </button>
