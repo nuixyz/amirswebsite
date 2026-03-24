@@ -19,7 +19,8 @@ export default function Footer() {
     <footer data-scroll-section>
       <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col items-center gap-8 md:flex-row md:justify-between md:gap-6">
         <span className="font-display text-sm font-bold tracking-label text-white/80">
-          © 2026 amir. busy ramadimming.
+          © 2026 amir. busy ramadimming. <br />
+          website made by nuixyz on discord
         </span>
 
         {/* Links — wrap on mobile */}
@@ -36,9 +37,7 @@ export default function Footer() {
           ))}
         </nav>
         <button className="bg-white text-primary text-xs font-semibold tracking-label mx-4 px-4 py-2 rounded-md hover:opacity-90 transition-opacity whitespace-nowrap">
-          <a href="https://www.paypal.com/paypalme/nuixyz">
-            website made by nuix
-          </a>
+          <a href="https://ko-fi.com/nuixyz/tip">buy me a kofi</a>
         </button>
       </div>
     </footer>
