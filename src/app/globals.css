@@ -34,6 +34,11 @@
   --radius-lg: 8px;
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  scrollbar-width: none;
+}
+
 /* ── Base Styles ── */
 body {
   background-color: #f9f9f9;

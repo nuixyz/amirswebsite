@@ -30,7 +30,7 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${pixelifySans.variable}`}
     >
-      <body className="font-body text-on-surface antialiased">
+      <body className="font-body text-on-surface antialiased hide-scrollbar">
         <Preloader />
         {children}
       </body>
