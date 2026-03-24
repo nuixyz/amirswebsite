@@ -46,7 +46,9 @@ export default function Navbar() {
               className="bg-primary text-white text-xs font-semibold tracking-label uppercase
                                px-4 py-2 rounded-md hover:opacity-90 transition-opacity whitespace-nowrap"
             >
-              Support Me!
+              <a href="https://www.paypal.com/paypalme/amirthetrash">
+                Support Me!
+              </a>
             </button>
             <button
               className="md:hidden text-on-surface p-1"

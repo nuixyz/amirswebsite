@@ -35,10 +35,11 @@ export default function Footer() {
             </Link>
           ))}
         </nav>
-
-        <p className="text-xs font-bold text-white/80 tracking-label text-center md:text-right">
-          made by nuix
-        </p>
+        <button className="bg-white text-primary text-xs font-semibold tracking-label mx-4 px-4 py-2 rounded-md hover:opacity-90 transition-opacity whitespace-nowrap">
+          <a href="https://www.paypal.com/paypalme/amirthetrash">
+            website made by nuix
+          </a>
+        </button>
       </div>
     </footer>
   );
