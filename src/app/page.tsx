@@ -12,6 +12,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import DesktopMate from "@/components/DesktopMate";
 import { useBodyColor } from "@/hooks/useBodyColor";
 
+import Playsound from "@/components/PlaySound";
 
 const BG = {
   hero: "#f9f9f9",
@@ -21,7 +22,8 @@ const BG = {
   albums: "#f9f9f9",
   story: "#526fa1", // blue
   work: "#ff0000", // red
-  footer: "#ff0000", // yellow
+  elementofsurprise: "#a18cd5",
+  footer: "#ff0220", // yellow
 };
 
 const latestRelease = {
@@ -88,10 +90,13 @@ export default function Home() {
             imageAlt="amirthetrash"
           />
         </div>
-
-        <div data-bg={BG.footer}>
-          <Footer />
+        <div data-bg={BG.elementofsurprise}>
+          <Playsound />
         </div>
+        {/* <div data-bg={BG.footer}>
+          <Footer />
+        </div> */}
+        <Footer />
       </SmoothScroll>
       <DesktopMate />
     </>
