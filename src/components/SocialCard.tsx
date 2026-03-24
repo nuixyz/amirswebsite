@@ -1,53 +1,68 @@
-import { Music2, Youtube, Instagram, Twitter, ArrowRight } from "lucide-react";
-import { LucideIcon } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import {
+  faSoundcloud,
+  faTiktok,
+  faSpotify,
+  faYoutube,
+  faInstagram,
+  faXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+import { faMusic, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 interface LinkItem {
   label: string;
-  Icon: LucideIcon;
+  Icon: IconDefinition;
   href: string;
 }
 
 const links: LinkItem[] = [
   {
     label: "Spotify",
-    Icon: Music2,
+    Icon: faSpotify,
     href: "https://open.spotify.com/artist/4hBSyWM9kJonEcn7d6UnO9",
   },
   {
     label: "Apple Music",
-    Icon: Music2,
-    href: "https://music.apple.com/in/artist/amirthetrash/1712005676",
+    Icon: faMusic,
+    href: "https://music.apple.com/us/artist/amirthetrash/1712005676",
   },
   {
     label: "YouTube",
-    Icon: Youtube,
+    Icon: faYoutube,
     href: "https://www.youtube.com/@amirthetrash",
   },
   {
-    label: "Instagram",
-    Icon: Instagram,
-    href: "https://www.instagram.com/amircynical/",
+    label: "SoundCloud",
+    Icon: faSoundcloud,
+    href: "https://soundcloud.com/amirthetrash",
   },
-  { label: "Twitter / X", Icon: Twitter, href: "https://twitter.com" },
+  {
+    label: "Tik Tok",
+    Icon: faTiktok,
+    href: "https://www.tiktok.com/amirthetrash",
+  },
+  {
+    label: "Instagram",
+    Icon: faInstagram,
+    href: "https://www.instagram.com/amirthetrash",
+  },
+  {
+    label: "Twitter / X",
+    Icon: faXTwitter,
+    href: "https://x.com/amirthetrash",
+  },
 ];
 
 export default function SocialCard() {
   return (
-    <section
-      className="py-20 px-8 flex flex-col items-center bg-surface"
-      data-scroll-section
-    >
-      {/* Section header with ruled lines — mirrors the HTML's decorative lines */}
-      <h2
-        className="font-display text-2xl font-bold uppercase mb-12 flex items-center gap-4"
-        style={{ letterSpacing: "-0.02em" }}
-      >
+    <section className="py-20 px-8 flex flex-col items-center bg-surface">
+      <h2 className="font-display text-2xl font-bold uppercase mb-12 flex items-center gap-4">
         <span className="w-8 h-px bg-primary inline-block" />
         Check out my socials!
         <span className="w-8 h-px bg-primary inline-block" />
       </h2>
 
-      {/* Link list — max-w-xl centered, matches HTML */}
       <div className="w-full max-w-xl flex flex-col gap-2">
         {links.map(({ label, Icon, href }) => (
           <a
@@ -55,24 +70,19 @@ export default function SocialCard() {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between p-6
-                       bg-surface-container
-                       border-2 border-transparent
-                       hover:border-primary
-                       hover:bg-surface-high
-                       transition-all duration-300"
+            className="group flex items-center justify-between p-6 bg-surface-container border-2 border-transparent hover:border-primary transition-all duration-300"
           >
             <div className="flex items-center gap-4">
-              <Icon size={20} className="text-primary" />
+              {/* Use the FontAwesomeIcon component here */}
+              <FontAwesomeIcon icon={Icon} className="text-primary w-5 h-5" />
               <span className="font-display font-bold uppercase tracking-tight text-on-surface">
                 {label}
               </span>
             </div>
-            <ArrowRight
-              size={18}
-              className="text-on-surface-variant
-                         group-hover:translate-x-2 group-hover:text-primary
-                         transition-all duration-300"
+            {/* Direct replacement for ArrowRight */}
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              className="text-on-surface-variant group-hover:translate-x-2 group-hover:text-primary transition-all duration-300 w-[18px]"
             />
           </a>
         ))}
