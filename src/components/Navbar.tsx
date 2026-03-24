@@ -67,7 +67,6 @@ export default function Navbar() {
                     transition-opacity duration-300
                     ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         style={{
-          backgroundColor: "rgba(249, 249, 249, 0.96)",
           backdropFilter: "blur(16px)",
           WebkitBackdropFilter: "blur(16px)",
         }}

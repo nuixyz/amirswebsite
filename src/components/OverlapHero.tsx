@@ -50,6 +50,8 @@ export default function OverlapHero({
             fill
             className="object-cover"
             sizes="100vw"
+            // width={100}
+            // height={100}
           />
         </motion.div>
 
