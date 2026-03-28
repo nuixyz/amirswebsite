@@ -38,8 +38,8 @@ export default function ContactForm() {
 
       if (result.success) {
         setSubmitStatus("success");
-        setFormData({ name: "", email: "", message: "" }); // Reset form
-        setTimeout(() => setSubmitStatus("idle"), 5000); // Clear success message after 5s
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setSubmitStatus("idle"), 5000);
       } else {
         setSubmitStatus("error");
       }
@@ -62,132 +62,118 @@ export default function ContactForm() {
 
   return (
     <section
-      className="py-20 px-6"
+      className="mx-4 py-12 sm:py-16 lg:py-20 px-4 sm:px-6"
       data-scroll-section
     >
       <div className="max-w-2xl mx-auto">
-        {/* Card container */}
-        <div className="bg-surface-container-lowest rounded-2xl p-8 md:p-12 shadow-xl">
+        {/* Card */}
+        <div className="bg-surface-container-lowest rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-12 shadow-lg sm:shadow-xl">
           {/* Heading */}
           <h2
-            className="font-display font-bold text-on-surface mb-3"
+            className="font-display font-bold text-on-surface mb-2 sm:mb-3"
             style={{
-              fontSize: "clamp(2rem, 5vw, 2.5rem)",
+              fontSize: "clamp(1.8rem, 6vw, 2.5rem)",
               letterSpacing: "-0.02em",
             }}
           >
-            Write an Email
+            Send me a mail!
           </h2>
 
           {/* Description */}
-          <p className="text-on-surface-variant text-base mb-8">
+          <p className="text-on-surface-variant text-sm sm:text-base mb-6 sm:mb-8">
             For bookings, chaos, or just saying hi.
           </p>
 
-          {/* Success Message */}
+          {/* Success */}
           {submitStatus === "success" && (
-            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-              <p className="text-green-800 font-semibold text-sm">
+            <div className="mb-5 p-3 sm:p-4 bg-green-50 border border-green-200 rounded-lg">
+              <p className="text-green-800 font-semibold text-xs sm:text-sm">
                 ✓ Message sent! I'll get back to you soon.
               </p>
             </div>
           )}
 
-          {/* Error Message */}
+          {/* Error */}
           {submitStatus === "error" && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-red-800 font-semibold text-sm">
+            <div className="mb-5 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-800 font-semibold text-xs sm:text-sm">
                 ✗ Something went wrong. Please try again or email me directly.
               </p>
             </div>
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name and Email row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Name field */}
+          <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+            {/* Name + Email */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <div>
-                <label
-                  htmlFor="name"
-                  className="block text-xs tracking-label uppercase font-semibold text-on-surface mb-2"
-                >
+                <label className="block text-[10px] sm:text-xs tracking-label uppercase font-semibold text-on-surface mb-1.5 sm:mb-2">
                   Name
                 </label>
                 <input
                   type="text"
-                  id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="w-full px-4 py-3 bg-surface-container border-none rounded-lg
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-surface-container rounded-lg
                            text-on-surface placeholder:text-on-surface-variant
                            focus:outline-none focus:ring-2 focus:ring-primary/20
-                           transition-all"
+                           text-sm sm:text-base transition-all"
                   required
                   disabled={isSubmitting}
                 />
               </div>
 
-              {/* Email field */}
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-xs tracking-label uppercase font-semibold text-on-surface mb-2"
-                >
+                <label className="block text-[10px] sm:text-xs tracking-label uppercase font-semibold text-on-surface mb-1.5 sm:mb-2">
                   Email
                 </label>
                 <input
                   type="email"
-                  id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="your@email.com"
-                  className="w-full px-4 py-3 bg-surface-container border-none rounded-lg
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-surface-container rounded-lg
                            text-on-surface placeholder:text-on-surface-variant
                            focus:outline-none focus:ring-2 focus:ring-primary/20
-                           transition-all"
+                           text-sm sm:text-base transition-all"
                   required
                   disabled={isSubmitting}
                 />
               </div>
             </div>
 
-            {/* Message field */}
+            {/* Message */}
             <div>
-              <label
-                htmlFor="message"
-                className="block text-xs tracking-label uppercase font-semibold text-on-surface mb-2"
-              >
+              <label className="block text-[10px] sm:text-xs tracking-label uppercase font-semibold text-on-surface mb-1.5 sm:mb-2">
                 Message
               </label>
               <textarea
-                id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="What's on your mind?"
-                rows={6}
-                className="w-full px-4 py-3 bg-surface-container border-none rounded-lg
+                rows={5}
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-surface-container rounded-lg
                          text-on-surface placeholder:text-on-surface-variant
                          focus:outline-none focus:ring-2 focus:ring-primary/20
-                         transition-all resize-none"
+                         text-sm sm:text-base transition-all resize-none"
                 required
                 disabled={isSubmitting}
               />
             </div>
 
-            {/* Submit button */}
+            {/* Button */}
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-primary text-white font-bold text-sm tracking-label uppercase
-                       px-8 py-4 rounded-lg hover:opacity-90 transition-opacity
-                       shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-primary text-white font-bold text-xs sm:text-sm tracking-label uppercase
+                       px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:opacity-90 transition-opacity
+                       shadow-md sm:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? "Sending..." : "Send Transmission"}
+              {isSubmitting ? "Sending..." : "Send"}
             </button>
           </form>
         </div>

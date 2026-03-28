@@ -4,31 +4,37 @@ import { Heart } from "lucide-react";
 
 export default function SupportSection() {
   return (
-    <section className="mx-12 py-20 px-6 bg-surface rounded-4xl" data-scroll-section>
+    <section
+      className="mx-4 sm:mx-8 lg:mx-12 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-surface rounded-3xl sm:rounded-4xl"
+      data-scroll-section
+    >
       <div className="max-w-2xl mx-auto text-center">
         <h2
           className="font-display font-bold text-on-surface mb-4"
           style={{
-            fontSize: "clamp(2rem, 5vw, 3rem)",
+            fontSize: "clamp(1.8rem, 6vw, 3rem)",
             letterSpacing: "-0.02em",
           }}
         >
           Support the Trash
         </h2>
-        <p className="text-on-surface-variant text-base md:text-lg mb-10 max-w-xl mx-auto">
+
+        <p className="text-on-surface-variant text-sm sm:text-base md:text-lg mb-8 sm:mb-10 max-w-md sm:max-w-xl mx-6">
           Independent music is powered by you. Help keep the lights on and the
           synths buzzing.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center mx-4 gap-3 sm:gap-4">
           {/* Patreon Button */}
           <a
             href="https://www.patreon.com/amirthetrash"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 px-8 py-4 bg-[#FF424D] text-white font-semibold
-                       rounded-lg hover:opacity-90 transition-opacity shadow-lg w-full sm:w-auto justify-center"
+            className="group flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 bg-[#FF424D] text-white font-semibold
+                       rounded-lg hover:opacity-90 transition-opacity shadow-md sm:shadow-lg
+                       w-full sm:w-auto justify-center text-sm sm:text-base"
           >
-            <Heart size={20} fill="white" />
+            <Heart size={18} className="sm:w-5 sm:h-5" fill="white" />
             Patreon
           </a>
 
@@ -37,13 +43,14 @@ export default function SupportSection() {
             href="https://www.paypal.com/paypalme/amirthetrash"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 px-8 py-4 bg-[#0070BA] text-white font-semibold
-                       rounded-lg hover:opacity-90 transition-opacity shadow-lg w-full sm:w-auto justify-center"
+            className="group flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 bg-[#0070BA] text-white font-semibold
+                       rounded-lg hover:opacity-90 transition-opacity shadow-md sm:shadow-lg
+                       w-full sm:w-auto justify-center text-sm sm:text-base"
           >
             <svg
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-5 h-5"
+              className="w-4 h-4 sm:w-5 sm:h-5"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path d="M20.067 8.478c.492.88.556 2.014.3 3.327-.74 3.806-3.276 5.12-6.514 5.12h-.5a.805.805 0 00-.794.68l-.04.22-.63 3.993-.032.17a.804.804 0 01-.794.679H7.72a.483.483 0 01-.477-.558L9.22 7.783a.966.966 0 01.953-.815h4.395c.77 0 1.477.06 2.116.196 1.976.42 3.179 1.708 3.383 3.314z" />
