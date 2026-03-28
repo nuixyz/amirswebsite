@@ -5,12 +5,22 @@ import { Heart } from "lucide-react";
 export default function SupportSection() {
   return (
     <section
-      className="mx-4 sm:mx-8 lg:mx-12 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-surface rounded-3xl sm:rounded-4xl"
+      className="relative mx-4 sm:mx-8 lg:mx-12 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 rounded-3xl sm:rounded-4xl overflow-hidden"
       data-scroll-section
     >
-      <div className="max-w-2xl mx-auto text-center">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/yunayubg.png')",
+        }}
+      />
+      {/* overlay */}
+      <div className="absolute inset-0 bg-black/40" />
+
+      <div className="relative max-w-2xl mx-auto text-center">
         <h2
-          className="font-display font-bold text-on-surface mb-4"
+          className="font-display font-bold text-white mb-4"
           style={{
             fontSize: "clamp(1.8rem, 6vw, 3rem)",
             letterSpacing: "-0.02em",
@@ -19,7 +29,7 @@ export default function SupportSection() {
           Support the Trash
         </h2>
 
-        <p className="text-on-surface-variant text-sm sm:text-base md:text-lg mb-8 sm:mb-10 max-w-md sm:max-w-xl mx-6">
+        <p className="text-white font-bold text-sm sm:text-base md:text-lg mb-8 sm:mb-10 max-w-md sm:max-w-xl mx-6">
           Independent music is powered by you. Help keep the lights on and the
           synths buzzing.
         </p>

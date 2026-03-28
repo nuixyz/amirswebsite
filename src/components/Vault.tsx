@@ -18,7 +18,7 @@ export default function Vault() {
                      hover:border-primary transition-all duration-300
                      p-6 sm:p-8 md:p-12
                      flex flex-col items-center justify-center text-center
-                     min-h-[260px] sm:min-h-[300px] md:min-h-80"
+                     min-h-65 sm:min-h-75 md:min-h-80"
         >
           <div className="mb-4 sm:mb-6 text-primary">
             <Lock
@@ -56,7 +56,7 @@ export default function Vault() {
           className="group relative overflow-hidden bg-secondary-container/20 border-2 border-dashed border-outline-variant
                      p-6 sm:p-8 md:p-12
                      flex flex-col items-center justify-center text-center
-                     min-h-[260px] sm:min-h-[300px] md:min-h-80"
+                     min-h-65 sm:min-h-75 md:min-h-80"
         >
           <div className="mb-4 sm:mb-6 text-on-surface-variant opacity-60">
             <ShoppingBag
