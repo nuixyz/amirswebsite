@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import DesktopMate from "@/components/DesktopMate";
 import { useBodyColor } from "@/hooks/useBodyColor";
+import Vault from "@/components/Vault";
 
 import Playsound from "@/components/PlaySound";
 
@@ -62,6 +63,8 @@ export default function Home() {
             imageAlt="amirthetrash in the studio"
           />
         </div>
+
+        <Vault />
 
         <div data-bg={BG.albums}>
           <Albums />
