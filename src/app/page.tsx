@@ -4,14 +4,17 @@ import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import LatestRelease from "@/components/LatestRelease";
 import SocialCard from "@/components/SocialCard";
+import Vault from "@/components/Vault";
 import AboutSection from "@/components/AboutSection";
 import OverlapHero from "@/components/OverlapHero";
 import Albums from "@/components/Albums";
+import SupportSection from "@/components/Support";
+import ContactForm from "@/components/ContactForm";
+import PartnersSection from "@/components/Partners";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import DesktopMate from "@/components/DesktopMate";
 import { useBodyColor } from "@/hooks/useBodyColor";
-import Vault from "@/components/Vault";
 
 import Playsound from "@/components/PlaySound";
 
@@ -19,12 +22,15 @@ const BG = {
   hero: "#f9f9f9",
   release: "#f9f9f9",
   social: "#f9f9f9",
+  vault: "#f9f9f9",
   about: "#f9f9f9",
   albums: "#f9f9f9",
   story: "#526fa1", // blue
   work: "#ff0000", // red
   elementofsurprise: "#a18cd5",
-  footer: "#ff0220", // yellow
+  support: "#ffd0d1",
+  contact: "#ffd0d1",
+  partners: "#ffd0d1",
 };
 
 const latestRelease = {
@@ -64,10 +70,12 @@ export default function Home() {
           />
         </div>
 
-        <Vault />
-
         <div data-bg={BG.albums}>
           <Albums />
+        </div>
+
+        <div data-bg={BG.vault}>
+          <Vault />
         </div>
 
         <div data-bg={BG.story}>
@@ -93,13 +101,26 @@ export default function Home() {
             imageAlt="amirthetrash"
           />
         </div>
+
         <div data-bg={BG.elementofsurprise}>
           <Playsound />
         </div>
-        {/* <div data-bg={BG.footer}>
+
+        <div data-bg={BG.support}>
+          <SupportSection />
+        </div>
+
+        <div data-bg={BG.contact}>
+          <ContactForm />
+        </div>
+
+        <div data-bg={BG.partners}>
+          <PartnersSection />
+        </div>
+
+        <div data-bg="#000">
           <Footer />
-        </div> */}
-        <Footer />
+        </div>
       </SmoothScroll>
       <DesktopMate />
     </>
