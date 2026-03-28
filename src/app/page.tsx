@@ -31,6 +31,7 @@ const BG = {
   support: "#ffd0d1",
   contact: "#ffd0d1",
   partners: "#ffd0d1",
+  footer: "#ffd0d1",
 };
 
 const latestRelease = {
@@ -118,7 +119,7 @@ export default function Home() {
           <PartnersSection />
         </div>
 
-        <div data-bg="#000">
+        <div data-bg={BG.footer}>
           <Footer />
         </div>
       </SmoothScroll>
