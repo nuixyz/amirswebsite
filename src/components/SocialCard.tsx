@@ -40,7 +40,7 @@ const links: LinkItem[] = [
   {
     label: "Tik Tok",
     Icon: faTiktok,
-    href: "https://www.tiktok.com/amirthetrash",
+    href: "https://tiktok.com/@amirthetrash",
   },
   {
     label: "Instagram",
