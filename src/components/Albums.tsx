@@ -17,7 +17,6 @@ const albums: Album[] = [
     tag: "dariacore · hyperflip",
     description:
       "A hazy collection of bedroom beats for late nights and slow mornings.",
-    // coverSrc: "/covers/departures.jpg",
     coverSrc: "/covers/stargazer.png",
     spotifyUrl: "https://open.spotify.com/album/6XaXQpf2WPAsPDtmC8Hu0B",
     accentColor: "#7c3aed", // purple

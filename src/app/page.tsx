@@ -66,7 +66,7 @@ export default function Home() {
             label="About Me"
             heading='Amir (aka amirthetrash) is a producer and editor from Malaysia making everything from Lofi to Breakcore. He&apos;s best known for "departures" and "frutiger aero," which have hit over 1.8M combined streams and counting. 🎶'
             accentWord="meow"
-            imageSrc="/amir3.jpg"
+            imageSrc="/amir3.webp"
             imageAlt="amirthetrash in the studio"
           />
         </div>
@@ -86,7 +86,7 @@ export default function Home() {
             line2="Make"
             line3="Music"
             body="Somewhere between a bedroom and a stage, this all started."
-            imageSrc="/amir1.jpg"
+            imageSrc="/amir1.webp"
             imageAlt="amirthetrash"
           />
         </div>
@@ -98,7 +98,7 @@ export default function Home() {
             line2="Create"
             line3="Memories"
             body="I click good pictures too, you know."
-            imageSrc="/amir3.jpg"
+            imageSrc="/amir3.webp"
             imageAlt="amirthetrash"
           />
         </div>

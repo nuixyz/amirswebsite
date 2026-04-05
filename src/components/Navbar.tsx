@@ -15,9 +15,13 @@ export default function Navbar() {
     <>
       <nav className="fixed top-0 w-full z-50 backdrop-blur-md border-b border-outline-variant/15">
         <div className="w-full px-6 h-14 flex items-center justify-between">
-          <span className="font-display text-sm font-bold tracking-[0.15em] text-on-surface whitespace-nowrap">
-            <a>@amirthetrash</a>
-          </span>
+          <Link href="/" className="flex items-center">
+            <img
+              src="/amirlogofullname.png"
+              alt="Logo"
+              className="h-8 w-auto object-contain"
+            />
+          </Link>
 
           {/* Desktop links — centered */}
           <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">

@@ -59,9 +59,10 @@ export default function Preloader() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <Image
-              src="/maidamir.jpg"
+              src="/maidamir.webp"
               alt="amirthetrash"
               fill
+              sizes="10vw"
               className="object-cover"
               priority
             />

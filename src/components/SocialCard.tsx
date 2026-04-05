@@ -82,7 +82,7 @@ export default function SocialCard() {
             {/* Direct replacement for ArrowRight */}
             <FontAwesomeIcon
               icon={faArrowRight}
-              className="text-on-surface-variant group-hover:translate-x-2 group-hover:text-primary transition-all duration-300 w-[18px]"
+              className="text-on-surface-variant group-hover:translate-x-2 group-hover:text-primary transition-all duration-300 w-4.5"
             />
           </a>
         ))}
