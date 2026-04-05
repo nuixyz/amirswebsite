@@ -27,11 +27,11 @@ export default function LatestRelease({ track }: Props) {
     >
       <div className="max-w-4xl mx-auto">
         <div className="mb-12 flex items-center gap-4 px-4">
-          <div className="flex items-end gap-[3px] h-8">
+          <div className="flex items-end gap-0.75 h-8">
             {[60, 100, 40, 80, 55].map((h, i) => (
               <span
                 key={i}
-                className="w-[3px] bg-primary rounded-sm"
+                className="w-0.75 bg-primary rounded-sm"
                 style={{
                   height: `${h}%`,
                   animation: playing
@@ -51,7 +51,7 @@ export default function LatestRelease({ track }: Props) {
         </div>
 
         <div>
-          <div className="w-full aspect-video md:aspect-[21/9] bg-surface-high relative group overflow-hidden flex flex-col justify-end p-8">
+          <div className="w-full aspect-video md:aspect-21/9 bg-surface-high relative group overflow-hidden flex flex-col justify-end p-8">
             <div
               className="absolute inset-0 opacity-30
                          group-hover:scale-105 transition-transform duration-700"
@@ -63,7 +63,7 @@ export default function LatestRelease({ track }: Props) {
               }}
             />
             <div
-              className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent"
+              className="absolute inset-0 bg-to-t from-surface via-surface/60 to-transparent"
               style={{ isolation: "isolate" }}
             />
 
@@ -88,7 +88,7 @@ export default function LatestRelease({ track }: Props) {
 
                 <button
                   onClick={toggle}
-                  className="w-12 h-12 flex items-center justify-center flex-shrink-0
+                  className="w-12 h-12 flex items-center justify-center shrink-0
                              bg-primary text-on-primary
                              hover:opacity-90 transition-opacity"
                   aria-label={playing ? "Pause" : "Play"}
