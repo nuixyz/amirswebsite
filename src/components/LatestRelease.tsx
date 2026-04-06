@@ -2,7 +2,7 @@
 
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react";
 import WaveformBar from "./WaveformBar";
-import { usePlayer } from "@/hooks/usePlayer";
+import { usePlayer } from "../hooks/usePlayer";
 
 interface Track {
   title: string;

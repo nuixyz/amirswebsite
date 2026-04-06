@@ -1,6 +1,6 @@
 import { Space_Grotesk, Inter, Pixelify_Sans } from "next/font/google";
 import "./globals.css";
-import Preloader from "@/components/preloader";
+import Preloader from "../components/preloader";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],

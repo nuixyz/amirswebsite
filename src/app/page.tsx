@@ -1,22 +1,22 @@
 "use client";
 
-import HeroSection from "@/components/HeroSection";
-import Navbar from "@/components/Navbar";
-import LatestRelease from "@/components/LatestRelease";
-import SocialCard from "@/components/SocialCard";
-import Vault from "@/components/Vault";
-import AboutSection from "@/components/AboutSection";
-import OverlapHero from "@/components/OverlapHero";
-import Albums from "@/components/Albums";
-import SupportSection from "@/components/Support";
-import ContactForm from "@/components/ContactForm";
-import PartnersSection from "@/components/Partners";
-import Footer from "@/components/Footer";
-import SmoothScroll from "@/components/SmoothScroll";
-import DesktopMate from "@/components/DesktopMate";
-import { useBodyColor } from "@/hooks/useBodyColor";
+import HeroSection from "../components/HeroSection";
+import Navbar from "../components/Navbar";
+import LatestRelease from "../components/LatestRelease";
+import SocialCard from "../components/SocialCard";
+import Vault from "../components/Vault";
+import AboutSection from "../components/AboutSection";
+import OverlapHero from "../components/OverlapHero";
+import Albums from "../components/Albums";
+import SupportSection from "../components/Support";
+import ContactForm from "../components/ContactForm";
+import PartnersSection from "../components/Partners";
+import Footer from "../components/Footer";
+import SmoothScroll from "../components/SmoothScroll";
+import DesktopMate from "../components/DesktopMate";
+import { useBodyColor } from "../hooks/useBodyColor";
 
-import Playsound from "@/components/PlaySound";
+import Playsound from "../components/PlaySound";
 
 const BG = {
   hero: "#f9f9f9",
