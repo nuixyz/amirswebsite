@@ -37,13 +37,7 @@ class BlogService {
   // Public endpoints
   async getAllPosts(): Promise<BlogPost[]> {
     const response = await fetch(`${API_URL}/api/posts`);
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error(`Failed to fetch posts: ${response.status} - ${errorText}`);
-      throw new Error(
-        `Failed to fetch posts: ${response.status} - ${errorText}`,
-      );
-    }
+    if (!response.ok) throw new Error("Failed to fetch posts");
     return response.json();
   }
 
@@ -55,15 +49,7 @@ class BlogService {
 
   async getFeaturedPost(): Promise<BlogPost> {
     const response = await fetch(`${API_URL}/api/posts/featured`);
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error(
-        `Failed to fetch featured post: ${response.status} - ${errorText}`,
-      );
-      throw new Error(
-        `Failed to fetch featured post: ${response.status} - ${errorText}`,
-      );
-    }
+    if (!response.ok) throw new Error("Failed to fetch featured post");
     return response.json();
   }
 

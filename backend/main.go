@@ -39,20 +39,20 @@ type Server struct {
 }
 
 func NewServer(ctx context.Context) (*Server, error) {
-	// Firebase
+	// Initialize Firebase
 	opt := option.WithCredentialsFile("serviceAccountKey.json")
 	app, err := firebase.NewApp(ctx, nil, opt)
 	if err != nil {
 		return nil, fmt.Errorf("error initializing app: %v", err)
 	}
 
-	// Firestore
+	// Initialize Firestore
 	firestoreClient, err := app.Firestore(ctx)
 	if err != nil {
 		return nil, fmt.Errorf("error initializing firestore: %v", err)
 	}
 
-	// Auth
+	// Initialize Auth
 	authClient, err := app.Auth(ctx)
 	if err != nil {
 		return nil, fmt.Errorf("error initializing auth: %v", err)
@@ -69,17 +69,18 @@ func NewServer(ctx context.Context) (*Server, error) {
 }
 
 func (s *Server) setupRoutes() {
+	// Public routes
 	s.router.HandleFunc("/api/posts", s.handleGetPosts).Methods("GET", "OPTIONS")
-	s.router.HandleFunc("/api/posts/{slug}", s.handleGetPostBySlug).Methods("GET", "OPTIONS")
 	s.router.HandleFunc("/api/posts/featured", s.handleGetFeaturedPost).Methods("GET", "OPTIONS")
+	s.router.HandleFunc("/api/posts/{slug}", s.handleGetPostBySlug).Methods("GET", "OPTIONS")
 
-	// Admin
+	// Protected routes (require authentication)
 	s.router.HandleFunc("/api/admin/posts", s.authMiddleware(s.handleCreatePost)).Methods("POST", "OPTIONS")
 	s.router.HandleFunc("/api/admin/posts/{id}", s.authMiddleware(s.handleUpdatePost)).Methods("PUT", "OPTIONS")
 	s.router.HandleFunc("/api/admin/posts/{id}", s.authMiddleware(s.handleDeletePost)).Methods("DELETE", "OPTIONS")
 }
 
-// Verify Firebase auth token
+// Middleware to verify Firebase auth token
 func (s *Server) authMiddleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		authHeader := r.Header.Get("Authorization")
@@ -88,7 +89,8 @@ func (s *Server) authMiddleware(next http.HandlerFunc) http.HandlerFunc {
 			return
 		}
 
-		token := authHeader[7:]
+		// Extract token from "Bearer <token>"
+		token := authHeader[7:] // Remove "Bearer " prefix
 
 		// Verify the token
 		_, err := s.authClient.VerifyIDToken(context.Background(), token)
@@ -101,7 +103,7 @@ func (s *Server) authMiddleware(next http.HandlerFunc) http.HandlerFunc {
 	}
 }
 
-// GET /api/posts
+// GET /api/posts - Get all blog posts
 func (s *Server) handleGetPosts(w http.ResponseWriter, r *http.Request) {
 	ctx := context.Background()
 	posts := []BlogPost{}
@@ -126,7 +128,7 @@ func (s *Server) handleGetPosts(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(posts)
 }
 
-// GET /api/posts/{slug}
+// GET /api/posts/{slug} - Get single post by slug
 func (s *Server) handleGetPostBySlug(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	slug := vars["slug"]
@@ -151,35 +153,30 @@ func (s *Server) handleGetPostBySlug(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(post)
 }
 
-// GET /api/posts/featured
+// GET /api/posts/featured - Get featured post
 func (s *Server) handleGetFeaturedPost(w http.ResponseWriter, r *http.Request) {
 	ctx := context.Background()
 	iter := s.firestoreClient.Collection("posts").
 		Where("isFeatured", "==", true).
+		OrderBy("publishedAt", firestore.Desc).
 		Limit(1).
 		Documents(ctx)
 
 	doc, err := iter.Next()
 	if err != nil {
-		log.Printf("Error fetching featured post: %v", err)
-		http.Error(w, fmt.Sprintf("Error fetching featured post: %v", err), http.StatusInternalServerError)
+		http.Error(w, "No featured post found", http.StatusNotFound)
 		return
 	}
 
 	var post BlogPost
-	if err := doc.DataTo(&post); err != nil {
-		log.Printf("Error unmarshalling post: %v", err)
-		http.Error(w, fmt.Sprintf("Error unmarshalling post: %v", err), http.StatusInternalServerError)
-		return
-	}
+	doc.DataTo(&post)
 	post.ID = doc.Ref.ID
 
-	log.Printf("Returning featured post: %+v", post)
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(post)
 }
 
-// POST /api/admin/posts
+// POST /api/admin/posts - Create new post (protected)
 func (s *Server) handleCreatePost(w http.ResponseWriter, r *http.Request) {
 	var post BlogPost
 	if err := json.NewDecoder(r.Body).Decode(&post); err != nil {
@@ -207,7 +204,7 @@ func (s *Server) handleCreatePost(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(post)
 }
 
-// PUT /api/admin/posts/{id}
+// PUT /api/admin/posts/{id} - Update post (protected)
 func (s *Server) handleUpdatePost(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]
@@ -233,7 +230,7 @@ func (s *Server) handleUpdatePost(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(post)
 }
 
-// DELETE /api/admin/posts/{id}
+// DELETE /api/admin/posts/{id} - Delete post (protected)
 func (s *Server) handleDeletePost(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]

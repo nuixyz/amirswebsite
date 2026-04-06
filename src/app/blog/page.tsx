@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import BlogCard from "@/components/BlogCards";
+import BlogCard from "@/components/BlogCard";
 import FeaturedStory from "@/components/FeaturedStory";
 import { blogService, BlogPost } from "@/services/blogService";
 
