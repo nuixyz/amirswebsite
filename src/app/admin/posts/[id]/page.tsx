@@ -17,7 +17,7 @@ export default function PostEditor() {
   const [formData, setFormData] = useState({
     title: "",
     slug: "",
-    excerpt: "",
+    description: "",
     content: "",
     imageUrl: "",
     category: "TUTORIAL",
@@ -48,7 +48,7 @@ export default function PostEditor() {
         setFormData({
           title: post.title,
           slug: post.slug,
-          excerpt: post.excerpt,
+          description: post.description,
           content: post.content,
           imageUrl: post.imageUrl,
           category: post.category,
@@ -275,12 +275,12 @@ export default function PostEditor() {
           {/* Excerpt */}
           <div>
             <label className="block text-xs tracking-label uppercase font-semibold text-on-surface mb-2">
-              Excerpt
+              Description
             </label>
             <textarea
-              value={formData.excerpt}
+              value={formData.description}
               onChange={(e) =>
-                setFormData({ ...formData, excerpt: e.target.value })
+                setFormData({ ...formData, description: e.target.value })
               }
               placeholder="Short description of the post..."
               rows={3}
