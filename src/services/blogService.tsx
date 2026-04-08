@@ -1,3 +1,19 @@
+import { initializeApp, getApps } from "firebase/app";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+  orderBy,
+  limit,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  Timestamp,
+} from "firebase/firestore";
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -13,70 +29,103 @@ export interface BlogPost {
   updatedAt: string;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+};
+
+const app =
+  getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+const db = getFirestore(app);
 
 class BlogService {
-  private async fetchWithAuth(url: string, options: RequestInit = {}) {
-    const token = localStorage.getItem("authToken");
-
-    const headers = {
-      "Content-Type": "application/json",
-      ...(token && { Authorization: `Bearer ${token}` }),
-      ...options.headers,
-    };
-
-    const response = await fetch(url, { ...options, headers });
-
-    if (!response.ok) {
-      throw new Error(`API error: ${response.statusText}`);
-    }
-
-    return response;
-  }
-
-  // Public endpoints
   async getAllPosts(): Promise<BlogPost[]> {
-    const response = await fetch(`${API_URL}/api/posts`);
-    if (!response.ok) throw new Error("Failed to fetch posts");
-    return response.json();
+    const q = query(collection(db, "posts"), orderBy("publishedAt", "desc"));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+      publishedAt:
+        doc.data().publishedAt?.toDate?.()?.toISOString() ??
+        doc.data().publishedAt,
+      createdAt:
+        doc.data().createdAt?.toDate?.()?.toISOString() ?? doc.data().createdAt,
+      updatedAt:
+        doc.data().updatedAt?.toDate?.()?.toISOString() ?? doc.data().updatedAt,
+    })) as BlogPost[];
   }
 
   async getPostBySlug(slug: string): Promise<BlogPost> {
-    const response = await fetch(`${API_URL}/api/posts/${slug}`);
-    if (!response.ok) throw new Error("Failed to fetch post");
-    return response.json();
+    const q = query(
+      collection(db, "posts"),
+      where("slug", "==", slug),
+      limit(1),
+    );
+    const snapshot = await getDocs(q);
+    if (snapshot.empty) throw new Error("Post not found");
+    const doc = snapshot.docs[0];
+    return {
+      id: doc.id,
+      ...doc.data(),
+      publishedAt:
+        doc.data().publishedAt?.toDate?.()?.toISOString() ??
+        doc.data().publishedAt,
+      createdAt:
+        doc.data().createdAt?.toDate?.()?.toISOString() ?? doc.data().createdAt,
+      updatedAt:
+        doc.data().updatedAt?.toDate?.()?.toISOString() ?? doc.data().updatedAt,
+    } as BlogPost;
   }
 
   async getFeaturedPost(): Promise<BlogPost> {
-    const response = await fetch(`${API_URL}/api/posts/featured`);
-    if (!response.ok) throw new Error("Failed to fetch featured post");
-    return response.json();
+    const q = query(
+      collection(db, "posts"),
+      where("isFeatured", "==", true),
+      orderBy("publishedAt", "desc"),
+      limit(1),
+    );
+    const snapshot = await getDocs(q);
+    if (snapshot.empty) throw new Error("No featured post found");
+    const d = snapshot.docs[0];
+    return {
+      id: d.id,
+      ...d.data(),
+      publishedAt:
+        d.data().publishedAt?.toDate?.()?.toISOString() ?? d.data().publishedAt,
+      createdAt:
+        d.data().createdAt?.toDate?.()?.toISOString() ?? d.data().createdAt,
+      updatedAt:
+        d.data().updatedAt?.toDate?.()?.toISOString() ?? d.data().updatedAt,
+    } as BlogPost;
   }
 
-  // Admin endpoints (require authentication)
   async createPost(post: Partial<BlogPost>): Promise<BlogPost> {
-    const response = await this.fetchWithAuth(`${API_URL}/api/admin/posts`, {
-      method: "POST",
-      body: JSON.stringify(post),
+    const now = Timestamp.now();
+    const docRef = await addDoc(collection(db, "posts"), {
+      ...post,
+      createdAt: now,
+      updatedAt: now,
+      publishedAt: post.publishedAt
+        ? Timestamp.fromDate(new Date(post.publishedAt))
+        : now,
     });
-    return response.json();
+    return { id: docRef.id, ...post } as BlogPost;
   }
 
   async updatePost(id: string, post: Partial<BlogPost>): Promise<BlogPost> {
-    const response = await this.fetchWithAuth(
-      `${API_URL}/api/admin/posts/${id}`,
-      {
-        method: "PUT",
-        body: JSON.stringify(post),
-      },
-    );
-    return response.json();
+    await updateDoc(doc(db, "posts", id), {
+      ...post,
+      updatedAt: Timestamp.now(),
+    });
+    return { id, ...post } as BlogPost;
   }
 
   async deletePost(id: string): Promise<void> {
-    await this.fetchWithAuth(`${API_URL}/api/admin/posts/${id}`, {
-      method: "DELETE",
-    });
+    await deleteDoc(doc(db, "posts", id));
   }
 }
 
