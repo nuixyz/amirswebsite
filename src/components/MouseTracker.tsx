@@ -11,7 +11,7 @@ interface Position {
 
 const MouseTracker: React.FC = () => {
   const [imgPos, setImgPos] = useState<Position>({ x: 0, y: 0 });
-  const [direction, setDirection] = useState<Direction>("down");
+  const [direction, setDirection] = useState<Direction>("right");
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
