@@ -2,6 +2,8 @@ import { Space_Grotesk, Inter, Pixelify_Sans } from "next/font/google";
 import "./globals.css";
 import Preloader from "../components/preloader";
 
+import MouseTracker from "@/components/MouseTracker";
+
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
@@ -31,6 +33,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${pixelifySans.variable}`}
     >
       <body className="font-body text-on-surface antialiased hide-scrollbar">
+        <MouseTracker />
         <Preloader />
         {children}
       </body>
