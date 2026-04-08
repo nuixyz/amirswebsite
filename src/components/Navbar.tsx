@@ -23,12 +23,14 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Desktop links — centered */}
+          {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
             {links.map((l) => {
-              const href = `/${l.toLowerCase()}`;
+              const href = l === "Music" ? "/" : `/${l.toLowerCase()}`;
+
               const isActive =
                 pathname === href || (l === "Music" && pathname === "/");
+
               return (
                 <Link
                   key={l}
@@ -77,16 +79,18 @@ export default function Navbar() {
       >
         <nav className="flex flex-col gap-1 px-6 pt-8">
           {links.map((l, i) => {
-            const href = `/${l.toLowerCase()}`;
+            const href = l === "Music" ? "/" : `/${l.toLowerCase()}`;
+
             const isActive =
               pathname === href || (l === "Music" && pathname === "/");
+
             return (
               <Link
                 key={l}
                 href={href}
                 onClick={() => setOpen(false)}
                 className={`font-display font-bold py-4 border-b border-outline-variant/20
-                            ${isActive ? "text-primary" : "text-on-surface hover:text-primary"}`}
+                    ${isActive ? "text-primary" : "text-on-surface hover:text-primary"}`}
                 style={{
                   fontSize: "clamp(1.8rem, 8vw, 2.5rem)",
                   letterSpacing: "-0.02em",
