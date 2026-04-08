@@ -51,7 +51,7 @@ export default function BlogCard({ post }: Props) {
           </h3>
 
           <p className="text-on-surface-variant text-sm leading-relaxed mb-4 line-clamp-2">
-            {post.excerpt}
+            {post.description}
           </p>
 
           {/* Footer */}

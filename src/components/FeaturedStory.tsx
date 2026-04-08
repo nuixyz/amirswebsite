@@ -61,7 +61,7 @@ export default function FeaturedStory({ post }: Props) {
               </h2>
 
               <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
-                {post.excerpt}
+                {post.description}
               </p>
 
               <div className="flex items-center justify-between">
