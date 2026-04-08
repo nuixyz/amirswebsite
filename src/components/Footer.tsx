@@ -16,9 +16,9 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer data-scroll-section>
+    <footer data-scroll-section className="bg-[#ffd0d1]">
       <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col items-center gap-8 md:flex-row md:justify-between md:gap-6">
-        <span className="font-display text-sm font-bold tracking-label text-white/80">
+        <span className="font-display text-sm font-bold tracking-label text-white">
           © 2026 amir. busy ramadimming. <br />
           website made by nuixyz on discord
         </span>
@@ -29,7 +29,7 @@ export default function Footer() {
             <Link
               key={l.label}
               href={l.href}
-              className="text-xs tracking-label font-bold uppercase text-white/80
+              className="text-xs tracking-label font-bold uppercase text-white
                          hover:text-primary transition-colors duration-200"
             >
               {l.label}
