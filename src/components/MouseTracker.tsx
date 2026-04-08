@@ -1,9 +1,7 @@
 "use client";
-
 import React, { useState, useEffect, useRef } from "react";
 
 type Direction = "up" | "down" | "left" | "right";
-
 interface Position {
   x: number;
   y: number;
@@ -12,30 +10,30 @@ interface Position {
 const MouseTracker: React.FC = () => {
   const [imgPos, setImgPos] = useState<Position>({ x: 0, y: 0 });
   const [direction, setDirection] = useState<Direction>("right");
-
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const prevPos = useRef<Position>({ x: 0, y: 0 });
 
   useEffect(() => {
+    const timeoutRef = { current: null as NodeJS.Timeout | null };
+
     const handleMouseMove = (e: MouseEvent) => {
       const newX = e.clientX;
       const newY = e.clientY;
 
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
-
       timeoutRef.current = setTimeout(() => {
-        setImgPos((prevPos) => {
-          const dx = newX - prevPos.x;
-          const dy = newX - prevPos.y;
+        const dx = newX - prevPos.current.x;
+        const dy = newY - prevPos.current.y;
 
-          if (Math.abs(dx) > Math.abs(dy)) {
-            setDirection(dx > 0 ? "right" : "left");
-          } else {
-            setDirection(dy > 0 ? "down" : "up");
-          }
+        if (Math.abs(dx) > Math.abs(dy)) {
+          setDirection(dx > 0 ? "right" : "left");
+        } else {
+          setDirection(dy > 0 ? "down" : "up");
+        }
 
-          return { x: newX, y: newY };
-        });
-      }, 300);
+        prevPos.current = { x: newX, y: newY };
+        setImgPos({ x: newX, y: newY });
+      }, 500);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -54,11 +52,12 @@ const MouseTracker: React.FC = () => {
 
   return (
     <div
-      className="fixed pointer-events-none z-50 transition-all duration-1000 ease-in-out"
+      className="fixed pointer-events-none z-50"
       style={{
         left: `${imgPos.x}px`,
         top: `${imgPos.y}px`,
         transform: "translate(-50%, -50%)",
+        transition: "left 1s ease-out, top 1s ease-out",
       }}
     >
       <img
